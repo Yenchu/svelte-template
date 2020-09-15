@@ -68,7 +68,7 @@
     </span>
     {$darkMode ? 'Disable' : 'Enable'} dark mode
   </Tooltip>
-  <a href="https://github.com/yenchu" class="px-4 github">
+  <a href="https://github.com/matyunya/smelte" class="px-4 github">
     <img src="/github.png" alt="Github" width="24" height="24" />
   </a>
 </AppBar>
