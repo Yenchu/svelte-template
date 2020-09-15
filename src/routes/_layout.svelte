@@ -8,7 +8,7 @@
   import Tabs from 'smelte/src/components/Tabs';
   import Tooltip from 'smelte/src/components/Tooltip';
   import { Spacer } from 'smelte/src/components/Util';
-  import dark from '../dark.js';
+  import dark from '../utils/dark.js';
 
   const { preloading, page } = stores();
   $: path = $page.path;

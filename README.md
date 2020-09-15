@@ -2,7 +2,7 @@
 
 A demo project for Svelte, Sapper and Smelte.
 
-## Install Sapper
+### Install Sapper
 
 ```bash
 npx degit "sveltejs/sapper-template#rollup" svelte-demo
@@ -82,3 +82,9 @@ npm run dev
 ```
 
 Open up [localhost:3000](http://localhost:3000) and start clicking around.
+
+### Export static site
+
+```bash
+npm run export
+```
