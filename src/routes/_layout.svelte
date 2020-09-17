@@ -1,34 +1,28 @@
 <script>
-	import 'smelte/src/tailwind.css';
-  import { goto, stores } from '@sapper/app';
-  import AppBar from 'smelte/src/components/AppBar';
-  import ProgressLinear from 'smelte/src/components/ProgressLinear';
-  import Tabs from 'smelte/src/components/Tabs';
-  import Tooltip from 'smelte/src/components/Tooltip';
-  import { Spacer } from 'smelte/src/components/Util';
-  import DarkMode from '../components/DarkMode.svelte';
-  import Logout from '../components/Logout.svelte';
+  import "smelte/src/tailwind.css";
+  import { stores } from "@sapper/app";
+  import ProgressLinear from "smelte/src/components/ProgressLinear";
+  import Tooltip from "smelte/src/components/Tooltip";
+  import AppBar from "../components/AppBar.svelte";
+  import Logout from "../components/Logout.svelte";
   import { authToken } from "../store/stores.js";
-  import { topMenu } from '../ui/menu.js';
+  import { authMenu, mainMenu } from "../ui/menu.js";
 
-  const { preloading, page, session } = stores();
+  const { preloading, session } = stores();
+
+  $: menu = $authToken ? mainMenu : authMenu;
 
   if (!$session) {
     $session = {};
   }
   if ($authToken) {
-    console.log('set session authToken');
+    console.log("set session authToken");
     $session.authToken = $authToken;
   }
 
-  $: path = $page.path;
-
-	export let segment = '';
-  $: n = (segment || '').replace(new RegExp('-', 'g'), ' ');
-  $: name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : '';
-
-  let isDark;
-
+  export let segment = "";
+  $: n = (segment || "").replace(new RegExp("-", "g"), " ");
+  $: name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : "";
 </script>
 
 <svelte:head>
@@ -39,33 +33,19 @@
   <ProgressLinear app />
 {/if}
 
-<AppBar 
-	class={i => i.replace('dark-600', 'dark-900')}>
-  <a href="." class="px-2 md:px-8 flex items-center">
-    <img src="/logo-192.png" alt="svelte logo" width="44" />
-    <h6 class="pl-3 text-white tracking-widest font-thin text-lg">Svelte Demo</h6>
-  </a>
-  <Spacer />
-  <Tabs
-    navigation
-    items={topMenu}
-    bind:selected={path}
-    color="secondary" />
-  <Tooltip>
-    <span slot="activator">
-      <DarkMode bind:isDark={isDark} />
-    </span>
-    {isDark ? 'Disable' : 'Enable'} dark mode
-  </Tooltip>
-  <Tooltip>
-    <span slot="activator">
-      <Logout />
-    </span>
-    Log out
-  </Tooltip>
+<AppBar {menu}>
+  {#if $authToken}
+    <Tooltip>
+      <span slot="activator">
+        <Logout />
+      </span>
+      Log out
+    </Tooltip>
+  {/if}
 </AppBar>
 
 <main
-  class="relative p-8 lg:max-w-3xl mx-auto mb-10 mt-24 md:ml-64 md:pl-16 md:max-w-md md:px-3">
+  class="relative p-8 lg:max-w-3xl mx-auto mb-10 mt-24 md:ml-64 md:pl-16
+  md:max-w-md md:px-3">
   <slot />
 </main>

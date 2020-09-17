@@ -1,8 +1,12 @@
 import { pages } from './pages.js';
 
-export const topMenu = [
+export const mainMenu = [
   { to: pages.home, text: 'Home' },
-  { to: pages.login, text: 'Login' },
   { to: pages.about, text: 'About' },
   { to: pages.blog, text: 'Blog' }
+];
+
+export const authMenu = [
+  { to: pages.login, text: 'Sign in' },
+  { to: pages.register, text: 'Sign up' }
 ];

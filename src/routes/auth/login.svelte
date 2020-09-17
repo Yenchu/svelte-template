@@ -20,9 +20,13 @@
   let password = "";
   let email = "";
   let error;
+  let loading;
 
   const login = async () => {
+    //loading = true;
+
     const token = await post('login', {email, password}).catch(err => {
+      //loading = false;
       console.log(err);
       error = err;
     });
@@ -37,6 +41,9 @@
   };
 </script>
 
+{#if loading}
+<div></div>
+{:else}
 <form on:submit|preventDefault={login} method="post">
   <TextField bind:value={email} label="Email" outlined />
   <TextField type="password" bind:value={password} label="Password" outlined />
@@ -45,4 +52,5 @@
 
 {#if error}
   <p>{error}</p>
+{/if}
 {/if}

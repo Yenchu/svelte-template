@@ -91028,6 +91028,12 @@ tr.selected {
     width:10%
   }
 }
+.tooltip.svelte-1n6auy7{
+  left:50%;
+  -webkit-transform:translateX(-50%);
+  -ms-transform:translateX(-50%);
+  transform:translateX(-50%)
+}
 .reverse.svelte-zzky5a{
   -webkit-transform:rotate(180deg);
   -ms-transform:rotate(180deg);
@@ -91038,12 +91044,6 @@ tr.selected {
   -webkit-transform:rotate(90deg);
   -ms-transform:rotate(90deg);
   transform:rotate(90deg)
-}
-.tooltip.svelte-1n6auy7{
-  left:50%;
-  -webkit-transform:translateX(-50%);
-  -ms-transform:translateX(-50%);
-  transform:translateX(-50%)
 }
 h1.svelte-8od9u6,p.svelte-8od9u6{
   margin:0 auto
