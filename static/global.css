@@ -27,6 +27,22 @@ ul.svelte-1frg2tf{
 .content.svelte-gnxal1 li{
   margin:0 0 0.5em 0
 }
+.label-top.svelte-r33x2y{
+  line-height:0.05
+}
+
+.label-transition.svelte-r33x2y{
+  -webkit-transition:font-size 0.05s, line-height 0.1s;
+  -o-transition:font-size 0.05s, line-height 0.1s;
+  transition:font-size 0.05s, line-height 0.1s
+}
+
+label.text-xs{
+  font-size:0.7rem
+}
+.line.svelte-xd9zs6{
+  height:1px
+}
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -90955,17 +90971,6 @@ tr.selected {
   }
 }
 
-.reverse.svelte-zzky5a{
-  -webkit-transform:rotate(180deg);
-  -ms-transform:rotate(180deg);
-  transform:rotate(180deg)
-}
-
-.tip.svelte-zzky5a{
-  -webkit-transform:rotate(90deg);
-  -ms-transform:rotate(90deg);
-  transform:rotate(90deg)
-}
 .inc.svelte-mguqwa{
   -webkit-animation:svelte-mguqwa-increase 2s ease-in-out infinite;
   animation:svelte-mguqwa-increase 2s ease-in-out infinite
@@ -91023,18 +91028,22 @@ tr.selected {
     width:10%
   }
 }
+.reverse.svelte-zzky5a{
+  -webkit-transform:rotate(180deg);
+  -ms-transform:rotate(180deg);
+  transform:rotate(180deg)
+}
+
+.tip.svelte-zzky5a{
+  -webkit-transform:rotate(90deg);
+  -ms-transform:rotate(90deg);
+  transform:rotate(90deg)
+}
 .tooltip.svelte-1n6auy7{
   left:50%;
   -webkit-transform:translateX(-50%);
   -ms-transform:translateX(-50%);
   transform:translateX(-50%)
-}
-.github.svelte-1d0txue{
-  transition:0.3s ease-out
-}
-
-.github.svelte-1d0txue:hover{
-  transform:rotate(360deg)
 }
 h1.svelte-8od9u6,p.svelte-8od9u6{
   margin:0 auto

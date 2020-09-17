@@ -1,25 +1,14 @@
 <script>
-	import 'smelte/src/tailwind.css';
-  import { goto, stores } from '@sapper/app';
+  import { stores } from '@sapper/app';
   import AppBar from 'smelte/src/components/AppBar';
-  import ProgressLinear from 'smelte/src/components/ProgressLinear';
   import Tabs from 'smelte/src/components/Tabs';
   import Tooltip from 'smelte/src/components/Tooltip';
   import { Spacer } from 'smelte/src/components/Util';
   import DarkMode from '../components/DarkMode.svelte';
   import Logout from '../components/Logout.svelte';
-  import { authToken } from "../store/stores.js";
   import { topMenu } from '../ui/menu.js';
 
-  const { preloading, page, session } = stores();
-
-  if (!$session) {
-    $session = {};
-  }
-  if ($authToken) {
-    console.log('set session authToken');
-    $session.authToken = $authToken;
-  }
+  const { page } = stores();
 
   $: path = $page.path;
 
@@ -30,14 +19,6 @@
   let isDark;
 
 </script>
-
-<svelte:head>
-  <title>{name ? name : ''}</title>
-</svelte:head>
-
-{#if $preloading}
-  <ProgressLinear app />
-{/if}
 
 <AppBar 
 	class={i => i.replace('dark-600', 'dark-900')}>
