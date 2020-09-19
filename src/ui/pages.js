@@ -1,7 +1,10 @@
-export const pages = {
+export const mainPages = {
   home: '/',
-  login: '/auth/login',
-  register: '/auth/register',
   about: '/about',
   blog: '/blog'
+};
+
+export const authPages = {
+  login: '/auth/login',
+  register: '/auth/register'
 };

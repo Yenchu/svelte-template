@@ -1,10 +1,4 @@
-<script>
-	import { authToken } from "../store/stores.js";
-</script>
 
-{#if $authToken}
-  <p>for test: accessToken: {$authToken.accessToken}</p>
-{/if}
 <h4>Great success!</h4>
 
 <figure>

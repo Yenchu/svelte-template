@@ -2,7 +2,7 @@
   import { goto, stores } from '@sapper/app';
   import TopMenuButton from './TopMenuButton.svelte';
   import { authToken } from "../store/stores.js";
-  import { pages } from "../ui/pages.js"; 
+  import { authPages } from "../ui/pages.js"; 
 
   const { session } = stores();
 
@@ -14,7 +14,7 @@
 
     // TODO: call backend logout
     
-    goto(pages.login);
+    goto(authPages.login);
   };
 </script>
 
