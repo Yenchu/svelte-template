@@ -1,3 +1,30 @@
+<script context="module">
+  import { localAuthToken } from "../store/stores.js";
+  import { authPages, mainPages } from "../ui/pages.js";
+
+  export function preload(page, session) {
+    if (!process.browser) {
+      return;
+    }
+
+    const authToken = localAuthToken();
+
+    const isAuthPage = Object.values(authPages).includes(page.path);
+    
+    if (authToken && authToken.accessToken) {
+      if (isAuthPage) {
+        console.log("redirect to home page: " + page.path);
+        this.redirect(302, mainPages.home);
+      }
+    } else {
+      if (!isAuthPage) {
+        console.log("redirect to login page: " + page.path);
+        this.redirect(302, authPages.login);
+      }
+    }
+  }
+</script>
+
 <script>
   import "smelte/src/tailwind.css";
   import { goto, stores } from "@sapper/app";
@@ -7,9 +34,8 @@
   import Logout from "../components/Logout.svelte";
   import { authToken } from "../store/stores.js";
   import { authMenu, mainMenu } from "../ui/menu.js";
-  import { authPages } from "../ui/pages.js";
 
-  const { preloading, page, session } = stores();
+  const { preloading, session } = stores();
 
   if (!$session) {
     $session = {};
@@ -18,13 +44,6 @@
   if ($authToken) {
     console.log("set session authToken");
     $session.authToken = $authToken;
-  } else {
-    console.log('path: ' + page.path);
-    const isAuthPage = [...Object.values(authPages)].includes(page.path);
-    if (!isAuthPage) {
-      console.log('not auth page')
-      goto(authPages.login);
-    }
   }
 
   $: menu = $authToken ? mainMenu : authMenu;

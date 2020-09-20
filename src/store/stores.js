@@ -1,10 +1,9 @@
 import { writable } from 'svelte/store';
 
+const toStr = value => JSON.stringify(value);
+const toObj = JSON.parse;
+
 const localStore = (key, initVal) => {
-
-  const toStr = value => JSON.stringify(value);
-  const toObj = JSON.parse;
-
   let savedVal;
   if (process.browser) { // to avoid ReferenceError: localStorage is not defined
     const valStr = localStorage.getItem(key);
@@ -31,3 +30,11 @@ const localStore = (key, initVal) => {
 };
 
 export const authToken = localStore('auth-token', null);
+
+export const localAuthToken = () => {
+  const valStr = localStorage.getItem('auth-token');
+  if (valStr !== null) {
+    return toObj(valStr);
+  }
+  return null;
+};
