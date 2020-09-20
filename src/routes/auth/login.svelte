@@ -3,6 +3,7 @@
   import Button from "smelte/src/components/Button";
   import TextField from "smelte/src/components/TextField";
   import { post } from "../../api/api.js";
+  import { mainPages } from "../../ui/pages.js";
   import { authToken } from "../../store/stores.js";
 
   const { session } = stores();
@@ -20,6 +21,9 @@
     if (token) {
       $authToken = token;
 
+      if (!$session) {
+        $session = {};
+      }
       $session.authToken = token;
 
       goto(mainPages.home);

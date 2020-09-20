@@ -37,12 +37,11 @@
 
   const { preloading, session } = stores();
 
-  if (!$session) {
-    $session = {};
-  }
-
   if ($authToken) {
     console.log("set session authToken");
+    if (!$session) {
+      $session = {};
+    }
     $session.authToken = $authToken;
   }
 
