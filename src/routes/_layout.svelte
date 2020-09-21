@@ -31,13 +31,20 @@
   import { goto, stores } from "@sapper/app";
   import ProgressLinear from "smelte/src/components/ProgressLinear";
   import AppBar from "../components/AppBar.svelte";
+  import SideBar from "../components/SideBar.svelte";
   import Logout from "../components/Logout.svelte";
-  import { authToken } from "../store/stores.js";
+  import { authToken, showSodeBar } from "../store/stores.js";
   import { authMenu, mainMenu } from "../ui/menu.js";
+  import { settingsPages } from "../ui/pages.js";
 
-  const { preloading } = stores();
+  const { preloading, page } = stores();
 
   $: menu = $authToken ? mainMenu : authMenu;
+
+  // $: {
+  //   $showSodeBar = Object.values(settingsPages).includes($page.path);
+  //   console.log($showSodeBar + ' path: ' + $page.path);
+  // }
 
   export let segment = "";
   $: n = (segment || "").replace(new RegExp("-", "g"), " ");
@@ -62,6 +69,7 @@
 <main
   class="relative p-8 lg:max-w-3xl mx-auto mb-10 mt-24 md:ml-64 md:pl-16
   md:max-w-md md:px-3">
+  <!-- <SideBar /> -->
   {#if $authToken}
     <p>for test: accessToken is {$authToken.accessToken}</p>
   {/if}

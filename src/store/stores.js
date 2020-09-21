@@ -1,5 +1,7 @@
 import { writable } from 'svelte/store';
 
+export const showSodeBar = writable(false);
+
 const toStr = value => JSON.stringify(value);
 const toObj = JSON.parse;
 

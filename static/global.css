@@ -27,6 +27,9 @@ ul.svelte-1frg2tf{
 .content.svelte-gnxal1 li{
   margin:0 0 0.5em 0
 }
+.line.svelte-xd9zs6{
+  height:1px
+}
 .label-top.svelte-r33x2y{
   line-height:0.05
 }
@@ -39,9 +42,6 @@ ul.svelte-1frg2tf{
 
 label.text-xs{
   font-size:0.7rem
-}
-.line.svelte-xd9zs6{
-  height:1px
 }
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
@@ -91044,6 +91044,13 @@ tr.selected {
   -webkit-transform:translateX(-50%);
   -ms-transform:translateX(-50%);
   transform:translateX(-50%)
+}
+.drawer.svelte-6qcjcu{
+  min-width:250px
+}
+
+aside.svelte-6qcjcu{
+  height:100vh
 }
 h1.svelte-8od9u6,p.svelte-8od9u6{
   margin:0 auto
