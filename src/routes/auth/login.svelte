@@ -1,12 +1,10 @@
 <script>
-  import { goto, stores } from "@sapper/app";
+  import { goto } from "@sapper/app";
   import Button from "smelte/src/components/Button";
   import TextField from "smelte/src/components/TextField";
   import { post } from "../../api/api.js";
-  import { mainPages } from "../../ui/pages.js";
   import { authToken } from "../../store/stores.js";
-
-  const { session } = stores();
+  import { mainPages } from "../../ui/pages.js";
 
   let password = "";
   let email = "";
@@ -20,11 +18,6 @@
 
     if (token) {
       $authToken = token;
-
-      if (!$session) {
-        $session = {};
-      }
-      $session.authToken = token;
 
       goto(mainPages.home);
     }

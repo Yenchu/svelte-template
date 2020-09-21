@@ -1,15 +1,11 @@
 <script>
-  import { goto, stores } from '@sapper/app';
+  import { goto } from '@sapper/app';
+  import Tooltip from "smelte/src/components/Tooltip";
   import TopMenuButton from './TopMenuButton.svelte';
   import { authToken } from "../store/stores.js";
   import { authPages } from "../ui/pages.js"; 
 
-  const { session } = stores();
-
   const logout = () => {
-    if ($session.authToken) {
-      $session.authToken = null;
-    }
     $authToken = null;
 
     // TODO: call backend logout
@@ -18,4 +14,9 @@
   };
 </script>
 
-<TopMenuButton on:click={logout} icon="exit_to_app" />
+<Tooltip>
+  <span slot="activator">
+     <TopMenuButton on:click={logout} icon="exit_to_app" />
+  </span>
+  Log out
+</Tooltip>

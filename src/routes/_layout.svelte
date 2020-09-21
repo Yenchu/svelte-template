@@ -2,6 +2,8 @@
   import { localAuthToken } from "../store/stores.js";
   import { authPages, mainPages } from "../ui/pages.js";
 
+  let loading = true;
+  
   export function preload(page, session) {
     if (!process.browser) {
       return;
@@ -13,15 +15,14 @@
     
     if (authToken && authToken.accessToken) {
       if (isAuthPage) {
-        console.log("redirect to home page: " + page.path);
         this.redirect(302, mainPages.home);
       }
     } else {
       if (!isAuthPage) {
-        console.log("redirect to login page: " + page.path);
         this.redirect(302, authPages.login);
       }
     }
+    loading = false;
   }
 </script>
 
@@ -29,21 +30,12 @@
   import "smelte/src/tailwind.css";
   import { goto, stores } from "@sapper/app";
   import ProgressLinear from "smelte/src/components/ProgressLinear";
-  import Tooltip from "smelte/src/components/Tooltip";
   import AppBar from "../components/AppBar.svelte";
   import Logout from "../components/Logout.svelte";
   import { authToken } from "../store/stores.js";
   import { authMenu, mainMenu } from "../ui/menu.js";
 
-  const { preloading, session } = stores();
-
-  if ($authToken) {
-    console.log("set session authToken");
-    if (!$session) {
-      $session = {};
-    }
-    $session.authToken = $authToken;
-  }
+  const { preloading } = stores();
 
   $: menu = $authToken ? mainMenu : authMenu;
 
@@ -57,17 +49,13 @@
 </svelte:head>
 
 {#if $preloading}
-  <ProgressLinear app />
+  <ProgressLinear />
 {/if}
 
+{#if !loading}
 <AppBar {menu}>
   {#if $authToken}
-    <Tooltip>
-      <span slot="activator">
-        <Logout />
-      </span>
-      Log out
-    </Tooltip>
+    <Logout />
   {/if}
 </AppBar>
 
@@ -79,3 +67,6 @@
   {/if}
   <slot />
 </main>
+{:else}
+  <ProgressLinear />
+{/if}

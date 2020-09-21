@@ -1,11 +1,14 @@
 <script>
-  import TopMenuButton from './TopMenuButton.svelte';
-  import dark from '../ui/dark.js';
+  import Tooltip from "smelte/src/components/Tooltip";
+  import TopMenuButton from "./TopMenuButton.svelte";
+  import dark from "../ui/dark.js";
 
   const darkMode = dark();
-
-  export let isDark;
-  $: isDark = $darkMode;
 </script>
 
-<TopMenuButton bind:value={$darkMode} icon="wb_sunny" />
+<Tooltip>
+  <span slot="activator">
+    <TopMenuButton bind:value={$darkMode} icon="wb_sunny" />
+  </span>
+  {$darkMode ? 'Disable' : 'Enable'} dark mode
+</Tooltip>
