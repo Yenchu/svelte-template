@@ -4,7 +4,7 @@
   import NavigationDrawer from "smelte/src/components/NavigationDrawer";
   import List from "smelte/src/components/List";
   import ListItem from "smelte/src/components/List/ListItem.svelte";
-  import { showSodeBar } from "../store/stores.js";
+  import { showSideBar } from "../store/stores.js";
   import { settingsMenu } from "../ui/menu.js";
 
   //export const showNav = writable(true);
@@ -18,7 +18,7 @@
 </script>
 
 <NavigationDrawer
-  bind:show={$showSodeBar}
+  bind:show={$showSideBar}
   right={$right}
   persistent={$persistent}
   elevation={$elevation}>

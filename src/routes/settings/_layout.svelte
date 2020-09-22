@@ -1,7 +1,12 @@
 <script>
   import SideBar from "../../components/SideBar.svelte";
+  import { showSideBar } from "../../store/stores.js";
 
-  export let segment = "";ƒ
+  /*
+    TODO: need to fix Uncaught TypeError: window.removeListener is not a function (breakpoints.js:25)
+  */
+  $: $showSideBar = true;
+  export let segment = "";
   $: n = (segment || "").replace(new RegExp("-", "g"), " ");
   $: name = n.length ? n.charAt(0).toUpperCase() + n.slice(1) : "";
 </script>

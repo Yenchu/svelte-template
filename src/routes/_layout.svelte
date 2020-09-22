@@ -33,7 +33,7 @@
   import AppBar from "../components/AppBar.svelte";
   import SideBar from "../components/SideBar.svelte";
   import Logout from "../components/Logout.svelte";
-  import { authToken, showSodeBar } from "../store/stores.js";
+  import { authToken, showSideBar } from "../store/stores.js";
   import { authMenu, mainMenu } from "../ui/menu.js";
   import { settingsPages } from "../ui/pages.js";
 
@@ -42,8 +42,7 @@
   $: menu = $authToken ? mainMenu : authMenu;
 
   // $: {
-  //   $showSodeBar = Object.values(settingsPages).includes($page.path);
-  //   console.log($showSodeBar + ' path: ' + $page.path);
+  //   $showSideBar = Object.values(settingsPages).includes($page.path);
   // }
 
   export let segment = "";
